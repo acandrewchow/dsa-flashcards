@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Flashcard = ({ card }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -6,6 +6,11 @@ const Flashcard = ({ card }) => {
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
+
+  // Reset isFlipped when the card changes to show question
+  useEffect(() => {
+    setIsFlipped(false);
+  }, [card]);
 
   return (
     <div
